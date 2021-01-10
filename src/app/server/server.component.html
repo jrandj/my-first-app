@@ -2,17 +2,27 @@
     <div class="row">
         <div class="col-xs-12">
             <ol>
-                <li>Add an Input field which updates a property ('username') via Two-Way-Binding</li>
-                <li>Output the username property via String Interpolation (in a paragraph below the input)</li>
-                <li>Add a button which may only be clicked if the username is NOT an empty string</li>
-                <li>Upon clicking the button, the username whould be reset to an empty string</li>
+                <li>Add a button which says 'Display Details'</li>
+                <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+                <li>Toggle the displaying of the paragraph with the button</li>
+                <li>Log all button clicks in an array and output the array below the paragraph</li>
+                <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
             </ol>
             <input type="text" class="form-control" [(ngModel)]="userName">
             <p>Name is {{ userName }}</p>
             <div class="mb1">
-                <button class="btn btn-primary" [disabled]="userName === ''" (click)="onClick()">
+                <button class="btn btn-primary" [disabled]="userName === ''" (click)="updateName()">
                     Update Name
                 </button>
+            </div>
+            <p>Display Details</p>
+            <div class="mb2">
+                <button class="btn btn-primary" (click)="displayDetails(); recordDisplayDetailsClicks()">
+                    Display Details
+                </button>
+            </div>
+            <p *ngIf=showDetails>Secret Password = 'tuna'</p>
+            <div *ngFor="let time of times; let i = index" [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}" [ngClass]="{'white-text': i >=4}">{{ time }}
             </div>
         </div>
     </div>

@@ -11,12 +11,24 @@ export class ServerComponent implements OnInit {
     constructor() { }
 
     userName = '';
+    showDetails = false;
+    times = [];
+    count = 0;
 
     ngOnInit(): void {
     }
 
-    onClick() {
+    updateName() {
         this.userName = '';
+    }
+
+    recordDisplayDetailsClicks() {
+        this.times.push(new Date(Number(new Date())));
+        this.count++;
+    }
+
+    displayDetails() {
+        this.showDetails = !this.showDetails;
     }
 
 }
