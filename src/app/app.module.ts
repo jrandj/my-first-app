@@ -1,34 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { RecipesComponent } from './recipes/recipes.component';
 import { FormsModule } from '@angular/forms';
-import { DropdownDirective } from './shared/dropdown.directive';
+import { AppComponent } from './app.component';
+import { ActiveUsersComponent } from './active-users/active-users.component';
+import { InactiveUsersComponent } from './inactive-users/inactive-users.component';
+import { CounterService } from './counter.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    RecipeListComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    RecipesComponent,
-    DropdownDirective
+    ActiveUsersComponent,
+    InactiveUsersComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
