@@ -8,25 +8,31 @@ import { Recipe } from './recipe.model';
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe('Test 1',
-            'This is a test recipe',
-            'https://c.pxhere.com/images/d6/32/9598e40fd9bda7a852946bea77b5-1604207.jpg!d',
-            [
-                new Ingredient('Meat', 1),
-                new Ingredient('Bun', 1)
-            ]),
-        new Recipe('Test 2',
-            'This is another test recipe',
-            'https://c.pxhere.com/images/d6/32/9598e40fd9bda7a852946bea77b5-1604207.jpg!d',
-            [
-                new Ingredient('Meat', 1),
-                new Ingredient('Bun', 1),
-                new Ingredient('Lettuce', 1)
-            ])
-    ];
+    // private recipes: Recipe[] = [
+    //     new Recipe('Test 1',
+    //         'This is a test recipe',
+    //         'https://c.pxhere.com/images/d6/32/9598e40fd9bda7a852946bea77b5-1604207.jpg!d',
+    //         [
+    //             new Ingredient('Meat', 1),
+    //             new Ingredient('Bun', 1)
+    //         ]),
+    //     new Recipe('Test 2',
+    //         'This is another test recipe',
+    //         'https://c.pxhere.com/images/d6/32/9598e40fd9bda7a852946bea77b5-1604207.jpg!d',
+    //         [
+    //             new Ingredient('Meat', 1),
+    //             new Ingredient('Bun', 1),
+    //             new Ingredient('Lettuce', 1)
+    //         ])
+    // ];
+    private recipes: Recipe[] = [];
 
     constructor(private slService: ShoppingListService) {
+    }
+
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
     }
 
     getRecipes() {
